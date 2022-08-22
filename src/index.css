@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.modal-backdrop.show{
+    opacity: 0;
+}
+body{
+    overflow-y: visible !important;
+}
+.modal-backdrop{
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+}
+.modal-open , body{
+    padding-right: 0 !important;
+}
