@@ -10,11 +10,11 @@ const Login = (props) => {
       logEmail === localStorage.getItem("email") &&
       logPassword === localStorage.getItem("password")
     ) {
+      window.location.href = "/search"
       props.loggedIn();
       setLogEmail("");
       setLogPassword("");
     } else {
-      window.location.href = "/";
       setLogEmail("");
       setLogPassword("");
       alert("incorrect Credencials");
@@ -22,6 +22,7 @@ const Login = (props) => {
   };
   Login.propTypes = {
     loggedIn: PropTypes.func.isRequired,
+    login:PropTypes.bool.isRequired
   };
 
   return (
@@ -48,8 +49,8 @@ const Login = (props) => {
       />
       <br />
       <br />
-      <Link to="/search" onClick={log}>
-        <button className="h-12 w-full border border-solid bg-orange-500 text-white font-bold hover:bg-orange-600">
+      <Link to={props.login? "/search":"/"}>
+        <button  onClick={log} className="h-12 w-full border border-solid bg-orange-500 text-white font-bold hover:bg-orange-600">
           Login
         </button>
       </Link>
