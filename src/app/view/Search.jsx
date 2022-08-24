@@ -154,9 +154,9 @@ const Search = (props) => {
                       logo={item.logo}
                       name={item.name}
                       review={item.review}
-                      opens_at={item.hours.monday.opens_at}
-                      closes_at={item.hours.monday.closes_at}
-                      is_closed={item.hours.monday.is_closed}
+                      opens_at={item.hours[day].opens_at}
+                      closes_at={item.hours[day].closes_at}
+                      is_closed={item.hours[day].is_closed}
                     />
                   </div>
                 );
