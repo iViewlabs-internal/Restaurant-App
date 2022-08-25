@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -7,7 +8,15 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const reg = () => {
-    if (password === confirmPassword && email !== "" && name !== "") {
+    if (name === "") {
+      alert("Name is Missing.");
+    } else if (email === "") {
+      alert("Email is Missing.");
+    } else if (password !== confirmPassword) {
+      setPassword("");
+      setConfirmPassword("");
+      alert("Password is not matching.");
+    } else if (name !== "" && email !== "" && password === confirmPassword) {
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
       setName("");
@@ -15,23 +24,23 @@ const Register = () => {
       setPassword("");
       setConfirmPassword("");
       alert(
-        "You gets register Successfully . Now you Can Login with your Credencials!"
+        "You gets register Successfully . Now you Can Login with your Credentials!"
       );
+      window.location.href="/"
     } else {
       setName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-      alert("incorrect");
+      alert("Incorrect");
     }
   };
-
   return (
     <>
       <input
         type="name"
         placeholder="Your Name"
-        className="w-full h-12 border border-solid placeholder:pl-3 text-lg"
+        className="w-full h-12 border border-solid pl-3 text-lg"
         id="name"
         value={name}
         onChange={(e) => {
@@ -42,7 +51,7 @@ const Register = () => {
       <input
         type="email"
         placeholder="Your Email Address"
-        className="w-full h-12 border border-solid placeholder:pl-3 text-lg"
+        className="w-full h-12 border border-solid pl-3 text-lg"
         id="email"
         value={email}
         onChange={(e) => {
@@ -53,7 +62,7 @@ const Register = () => {
       <input
         type="password"
         placeholder="Your Password"
-        className="w-full h-12 border border-solid placeholder:pl-3 text-lg"
+        className="w-full h-12 border border-solid pl-3 text-lg"
         id="pass"
         value={password}
         onChange={(e) => {
@@ -64,7 +73,7 @@ const Register = () => {
       <input
         type="password"
         placeholder="Password confrimation"
-        className="w-full h-12 border border-solid placeholder:pl-3 text-lg"
+        className="w-full h-12 border border-solid pl-3 text-lg"
         id="cPass"
         value={confirmPassword}
         onChange={(e) => {
@@ -72,15 +81,20 @@ const Register = () => {
         }}
       />{" "}
       <br /> <br />
-      <button
-        onClick={reg}
-        data-bs-dismiss="modal"
-        className="h-12 w-full border border-solid bg-orange-600 text-white font-bold hover:bg-orange-700"
-      >
-        Register
-      </button>
+      <Link to="/">
+        <button
+          onClick={reg}
+          className="h-12 w-full border border-solid bg-orange-600 text-white font-bold hover:bg-orange-700"
+        >
+          Register
+        </button>
+      </Link>
     </>
   );
 };
 
 export default Register;
+
+
+
+

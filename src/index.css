@@ -12,6 +12,7 @@
 }
 body{
     overflow-y: visible !important;
+    overflow-x: hidden !important;
 }
 .modal-backdrop{
     height: 0 !important;

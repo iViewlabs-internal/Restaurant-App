@@ -16,7 +16,7 @@
     3) after that open your terminal in main folder and run a commond:  npm install
         and hit enter (it will install all the dependancies that have required in this project)
 
-    4) take the reference for tailwind css connectivity from here-  https://medium.com/codingthesmartway-com-blog/how-to-use-tailwind-css-with-react-9dd78bbdc0e0
+    4) you can take reference for tailwind css from here: https://medium.com/codingthesmartway-com-blog/how-to-use-tailwind-css-with-react-9dd78bbdc0e0
 
     5) for find and fix problems with the JavaScript code Here is Eslint gets implemented so if you are getting errors in the terminal via eslint then follow this link for installation and about of eslint (https://eslint.org/docs/latest/user-guide/getting-started#installation-and-usage)
     (most probably there will not any kind of error but if there is errors via eslint then you can follow this link)

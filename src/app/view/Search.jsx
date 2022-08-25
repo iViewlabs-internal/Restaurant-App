@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../components/footer/Footer";
 import PropTypes from "prop-types";
 import Loader from "./Loader";
 import ViewMore from "../modals/ViewMore";
+import Footer from "../components/footer/Footer";
 
 const Search = (props) => {
   const [input, setInput] = useState("");
@@ -22,7 +22,6 @@ const Search = (props) => {
 
   const d = new Date();
   const day = days[d.getDay()];
-  // console.log(day)
 
   Search.propTypes = {
     logout: PropTypes.func.isRequired,
@@ -55,7 +54,7 @@ const Search = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="container min-h-[100vh]">
       <div className="h-14 bg-neutral-700 flex justify-between">
         <div>
           <h2 className="text-yellow-400 text-2xl ml-4 pt-2 font-bold">
@@ -65,13 +64,13 @@ const Search = (props) => {
         </div>
         <div className="flex">
           <Link to="/settings">
-            <button className="bg-white text-black font-bold h-9 w-20 mt-[2vh] mr-9 rounded-md hover:bg-black hover:text-white">
+            <button className="bg-white text-black font-bold h-9 w-24 mt-[2vh] mr-9 rounded-md hover:bg-black hover:text-white">
               Settings
             </button>
           </Link>
           <Link to="/">
             <button
-              className="bg-white text-black font-bold h-9 w-20 mt-[2vh] mr-4 rounded-md hover:bg-black hover:text-white"
+              className="bg-white text-black font-bold h-9 w-24 mt-[2vh] mr-4 rounded-md hover:bg-black hover:text-white"
               onClick={props.logout}
             >
               LogOut
@@ -80,7 +79,7 @@ const Search = (props) => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center bg-[#6e6766] h-72 relative">
-        <h2 className="text-2xl font-bold text-yellow-300 pb-10 font-serif">
+        <h2 className="lg:text-2xl md:text-xl sm:text-sm font-bold text-yellow-300 pb-10 font-serif">
           Search The Type of The Restaurant And See The Matches One By One !
         </h2>
         <input
@@ -90,12 +89,12 @@ const Search = (props) => {
             setInput(e.target.value);
           }}
           placeholder="Search The Type of The Restaurant"
-          className="h-12 w-[45%] border rounded-lg border-slate-800 placeholder:pl-3 text-lg"
+          className="h-12 w-[45%] border rounded-lg border-slate-800 lg:text-lg sm:text-sm pl-5"
         ></input>
       </div>
 
-      <div className="bg-neutral-700 pb-5">
-        <div className="grid grid-cols-3 gap-x-5 gap-y-5 mx-8 pt-14">
+      <div className="bg-neutral-700 px-4">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10">
           {loading === true ? (
             <Loader />
           ) : (
