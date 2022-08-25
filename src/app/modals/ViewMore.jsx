@@ -7,8 +7,8 @@ const ViewMore = (props) => {
     logo: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     review: PropTypes.string.isRequired,
-    opens_at: PropTypes.number.isRequired,
-    closes_at: PropTypes.number.isRequired,
+    opens_at: PropTypes.string.isRequired,
+    closes_at: PropTypes.string.isRequired,
     is_closed: PropTypes.bool.isRequired,
   };
   return (

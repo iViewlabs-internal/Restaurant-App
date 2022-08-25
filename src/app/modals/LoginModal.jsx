@@ -31,7 +31,7 @@ const LoginModal = (props) => {
             </button>
           </div>
           <div className="modal-body">
-            <Login oggedIn={props.loggedIn} login={props.login} />
+            <Login loggedIn={props.loggedIn} login={props.login} />
           </div>
         </div>
       </div>
