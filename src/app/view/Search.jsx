@@ -48,29 +48,28 @@ const Search = (props) => {
         : sessionStorage.getItem("timer");
     const intervalId = setInterval(() => {
       fetchApi();
-      console.log(day);
     }, timerStorage);
     return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <div className="container min-h-[100vh]">
-      <div className="h-14 bg-neutral-700 flex justify-between">
+    <div className="container">
+      <div className="h-[9vh] bg-black flex flex-row justify-between items-center">
         <div>
-          <h2 className="text-yellow-400 text-2xl ml-4 pt-2 font-bold">
+          <h2 className="text-lime-500 lg:text-2xl ml-4 font-bold md:text-xl">
             <span className="text-white">My</span> RESTAU
             <span className="text-white">RANTs!</span>
           </h2>
         </div>
         <div className="flex">
           <Link to="/settings">
-            <button className="bg-white text-black font-bold h-9 w-24 mt-[2vh] mr-9 rounded-md hover:bg-black hover:text-white">
+            <button className="bg-white text-black font-bold h-9 w-24 mr-9 rounded-md hover:bg-green-500 hover:text-white">
               Settings
             </button>
           </Link>
           <Link to="/">
             <button
-              className="bg-white text-black font-bold h-9 w-24 mt-[2vh] mr-4 rounded-md hover:bg-black hover:text-white"
+              className="bg-white text-black font-bold h-9 w-24 mr-4 rounded-md hover:bg-green-500 hover:text-white"
               onClick={props.logout}
             >
               LogOut
@@ -78,8 +77,16 @@ const Search = (props) => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center bg-[#6e6766] h-72 relative">
-        <h2 className="lg:text-2xl md:text-xl sm:text-sm font-bold text-yellow-300 pb-10 font-serif">
+      <div
+        className="flex flex-col justify-center items-center bg-no-repeat bg-cover h-96 relative"
+        style={{
+          backgroundImage: `url("https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600")`,
+          backgroundPosition: "left",
+          backgroundBlendMode: "darken",
+          backgroundColor: "#b5a7a7",
+        }}
+      >
+        <h2 className="lg:text-2xl md:text-xl sm:text-sm font-bold text-[#f2ffed] pb-10 font-serif  z-50">
           Search The Type of The Restaurant And See The Matches One By One !
         </h2>
         <input
@@ -93,8 +100,8 @@ const Search = (props) => {
         ></input>
       </div>
 
-      <div className="bg-neutral-700 px-4">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10">
+      <div className="bg-[#5d625b] px-4">
+        <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10">
           {loading === true ? (
             <Loader />
           ) : (
@@ -108,12 +115,15 @@ const Search = (props) => {
                   typeVal.toLowerCase().includes(input.toLowerCase())
                 ) {
                   return val;
+                } else {
+                  return;
                 }
               })
+
               .map((item, index) => {
                 return (
                   <div
-                    className="h-auto max-w-2xl  border bg-rose-300 border-black rounded flex flex-col"
+                    className="h-auto max-w-2xl  border bg-[#97878c] border-black rounded flex flex-col"
                     key={index}
                   >
                     <div className="flex p-4 bg-white pl-8">
@@ -140,7 +150,7 @@ const Search = (props) => {
                       </p>
                       <button
                         type="button"
-                        className="btn text-white bg-orange-400 hover:bg-black my-3"
+                        className="btn text-white bg-green-500 hover:bg-green-700 my-3"
                         data-bs-toggle="modal"
                         data-bs-target={`#exampleModal${index}`}
                       >
