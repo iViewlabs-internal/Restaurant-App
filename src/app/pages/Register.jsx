@@ -8,10 +8,14 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const reg = () => {
-    if(name === "" && email === "" && password === "" && confirmPassword === ""){
-      alert("Empty Fields! Please fill every fields. ")
-    }
-    else if (name === "") {
+    if (
+      name === "" &&
+      email === "" &&
+      password === "" &&
+      confirmPassword === ""
+    ) {
+      alert("Empty Fields! Please fill every fields. ");
+    } else if (name === "") {
       alert("Name is Missing.");
     } else if (name.length < 3) {
       alert("Name should contain atleast 3 characters");
@@ -23,7 +27,7 @@ const Register = () => {
       alert("Password is missing");
     } else if (confirmPassword === "") {
       alert("confirm Password is missing");
-    }else if (password !== confirmPassword) {
+    } else if (password !== confirmPassword) {
       setPassword("");
       setConfirmPassword("");
       alert("Password is not matching.");

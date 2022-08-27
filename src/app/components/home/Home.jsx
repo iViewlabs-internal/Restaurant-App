@@ -19,7 +19,10 @@ const Home = (props) => {
       >
         <div className="flex justify-between  pb-4">
           <div className="pt-5">
-            <h2 className="text-lime-500 text-2xl ml-4 font-bold" style={{textShadow:"1px 1px black"}}>
+            <h2
+              className="text-lime-500 lg:text-2xl md:text-xl ml-4 font-bold"
+              style={{ textShadow: "1px 1px black" }}
+            >
               <span className="text-[#f2ffed]">My</span> RESTAU
               <span className="text-[#f2ffed]">RANTs!</span>
             </h2>
@@ -43,7 +46,7 @@ const Home = (props) => {
         </div>
         <div className="flex flex-col justify-between">
           <div className="text-center">
-            <h1 className="text-[#f2ffed] text-center text-2xl text-opacity-100 z-50 font-bold">
+            <h1 className="text-[#f2ffed] text-center lg:text-2xl md:text-xl text-opacity-100 z-50 font-bold">
               Want To Find A RESTAURANT Near You ?{" "}
               <span className="bg-black rounded-lg px-2 py-1">
                 My <span className="font-bold text-lime-500">RESTAU</span>
