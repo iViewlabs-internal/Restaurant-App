@@ -8,15 +8,30 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const reg = () => {
-    if (name === "") {
+    if (
+      name === "" &&
+      email === "" &&
+      password === "" &&
+      confirmPassword === ""
+    ) {
+      alert("Empty Fields! Please fill every fields. ");
+    } else if (name === "") {
       alert("Name is Missing.");
+    } else if (name.length < 3) {
+      alert("Name should contain atleast 3 characters");
     } else if (email === "") {
       alert("Email is Missing.");
+    } else if (!email.includes(".") || !email.includes("@")) {
+      alert("Email is not conventional");
+    } else if (password === "") {
+      alert("Password is missing");
+    } else if (confirmPassword === "") {
+      alert("confirm Password is missing");
     } else if (password !== confirmPassword) {
       setPassword("");
       setConfirmPassword("");
       alert("Password is not matching.");
-    } else if (name !== "" && email !== "" && password === confirmPassword) {
+    } else if (password === confirmPassword) {
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
       setName("");
@@ -26,13 +41,9 @@ const Register = () => {
       alert(
         "You gets register Successfully . Now you Can Login with your Credentials!"
       );
-      window.location.href="/"
+      window.location.href = "/";
     } else {
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      alert("Incorrect");
+      alert("something is wrong! Try Again");
     }
   };
   return (
@@ -72,7 +83,7 @@ const Register = () => {
       <br /> <br />
       <input
         type="password"
-        placeholder="Password confrimation"
+        placeholder="Password confirmation"
         className="w-full h-12 border border-solid pl-3 text-lg"
         id="cPass"
         value={confirmPassword}
@@ -95,6 +106,36 @@ const Register = () => {
 
 export default Register;
 
+// import { useForm } from "react-hook-form";
 
+// const Register = () => {
 
+//   const {
+//     register,
+//     handleSubmit,
+//     formState: { errors },
+//   } = useForm();
+//   const onSubmit = () => {
 
+//   }
+
+//   return (
+//     <form onSubmit={handleSubmit(onSubmit)}>
+//       <input {...register('firstName',{ required: true })} type="text" placeholder="Your Name" className="w-full h-12 border border-solid pl-3 text-lg mt-2" />
+//       {errors.firstName ? <span className="text-red-500 pl-2">*This field is required.</span>:""}
+
+//       <input {...register('email', { required: true })} type="email" placeholder="Your Email" className="w-full h-12 border border-solid pl-3 text-lg mt-2"/>
+//       {errors.email && <p className="text-red-500 pl-2">*This field is required.</p>}
+
+//       <input {...register('password', {required: true})}  type="password" placeholder="Your Password" className="w-full h-12 border border-solid pl-3 text-lg mt-2"/>
+//       {errors.password && <p className="text-red-500 pl-2">*This field is required</p>}
+
+//       <input {...register('confirmPassword', {required: true})}  type="password" placeholder="Password Confirmation" className="w-full h-12 border border-solid pl-3 text-lg mt-2"/>
+//       {errors.confirmPassword && <p className="text-red-500 pl-2">*This field is required</p>}
+
+//       <button type="submit" className="h-12 w-full border border-solid bg-orange-600 text-white font-bold hover:bg-orange-700 mb-2">Register</button>
+//     </form>
+//   );
+// };
+
+// export default Register;
