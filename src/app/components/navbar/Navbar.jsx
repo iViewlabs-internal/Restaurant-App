@@ -9,7 +9,7 @@ const Navbar = (props) => {
 
   return (
     <div className="h-[9vh] bg-black flex items-center">
-      <div className="flex flex-row justify-between container mx-auto px-10 ">
+      <div className="flex flex-row justify-between container mx-auto px-14 ">
         <div>
           <h2 className="text-lime-500 lg:text-2xl font-bold md:text-xl font-sans">
             <span className="text-white">My</span> RESTAU
@@ -18,7 +18,7 @@ const Navbar = (props) => {
         </div>
         <div className="flex">
           {window.location.href ===
-          "http://localhost:3000/search" ? (
+          "https://my-restaurant1.netlify.app/search" ? (
             <Link to="/settings">
               <button className="bg-white text-black font-bold h-9 w-24 mr-9 rounded-md hover:bg-green-500 hover:text-white">
                 Settings
