@@ -83,7 +83,7 @@ const Search = (props) => {
         {loading === true ? (
           <Loader />
         ) : (
-          <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10 container">
+          <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10 container mx-auto px-10">
             {apiData &&
               apiData
                 .filter((val) => {

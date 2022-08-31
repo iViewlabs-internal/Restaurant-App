@@ -17,7 +17,7 @@ const Home = (props) => {
         className="bg-fixed bg-no-repeat bg-cover -z-50 flex flex-col justify-between h-screen"
         style={{ backgroundImage: `url(${fetchedUrl})`, opacity: "revert" }}
       >
-        <div className="flex justify-between  pb-4 container">
+        <div className="flex justify-between  pb-4 container mx-auto px-10">
           <div className="pt-5">
             <h2
               className="text-lime-500 lg:text-2xl md:text-xl font-bold"
