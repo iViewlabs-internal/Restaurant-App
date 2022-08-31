@@ -45,8 +45,9 @@ function Register() {
             {...register("username")}
             className={`form-control ${errors.username ? "is-invalid" : ""}`}
           />
-          <br />
+        
           <div className="invalid-feedback">{errors.username?.message}</div>
+          <br />
         </div>
         <div className="form-group">
           <input
@@ -56,8 +57,9 @@ function Register() {
             {...register("email")}
             className={`form-control ${errors.email ? "is-invalid" : ""}`}
           />
-          <br />
+       
           <div className="invalid-feedback">{errors.email?.message}</div>
+          <br />
         </div>
         <div className="form-group">
           <input
@@ -67,8 +69,9 @@ function Register() {
             {...register("password")}
             className={`form-control ${errors.password ? "is-invalid" : ""}`}
           />
-          <br />
+       
           <div className="invalid-feedback">{errors.password?.message}</div>
+          <br />
         </div>
 
         <div className="form-group">
@@ -81,10 +84,11 @@ function Register() {
               errors.confirmPassword ? "is-invalid" : ""
             }`}
           />
-          <br />
+       
           <div className="invalid-feedback">
             {errors.confirmPassword?.message}
           </div>
+          <br />
         </div>
         <div className="form-group">
           <button
