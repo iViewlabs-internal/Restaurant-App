@@ -53,10 +53,11 @@ const Search = (props) => {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       <Navbar logout={props.logout} />
+
       <div
-        className="flex flex-col justify-center items-center bg-no-repeat bg-cover h-[58.4vh] relative"
+        className="flex flex-col justify-center items-center bg-no-repeat bg-cover h-[58.4vh]"
         style={{
           backgroundImage: `url("https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600")`,
           backgroundPosition: "left",
@@ -78,11 +79,11 @@ const Search = (props) => {
         ></input>
       </div>
 
-      <div className="bg-[#5d625b] px-4">
+      <div className="bg-[#5d625b]">
         {loading === true ? (
           <Loader />
         ) : (
-          <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10">
+          <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10 container">
             {apiData &&
               apiData
                 .filter((val) => {
@@ -101,7 +102,7 @@ const Search = (props) => {
                 .map((item, index) => {
                   return (
                     <div
-                      className="h-auto max-w-2xl  border bg-[#97878c] border-black rounded-lg flex flex-col"
+                      className="h-auto max-w-2xl border bg-[#97878c] border-black rounded-lg flex flex-col"
                       key={index}
                     >
                       <div className="flex p-4 bg-white pl-8">
