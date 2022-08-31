@@ -9,7 +9,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="h-screen container">
+    <div className="h-screen">
       <Navbar />
 
       <div className="bg-slate-500 h-[83.7vh] w-auto flex flex-col items-center pt-36">

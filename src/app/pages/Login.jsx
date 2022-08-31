@@ -69,7 +69,7 @@ const Login = (props) => {
       <Link to={props.login ? "/search" : "/"}>
         <button
           onClick={log}
-          className="h-12 w-full border border-solid bg-orange-500 text-white font-bold hover:bg-orange-600"
+          className="h-12 w-full border border-solid font-bold bg-green-600 text-white font-bold hover:bg-green-500"
         >
           Login
         </button>

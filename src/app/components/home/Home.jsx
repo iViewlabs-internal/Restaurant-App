@@ -12,22 +12,22 @@ const Home = (props) => {
   const fetchedUrl =
     "https://images.pexels.com/photos/1237073/pexels-photo-1237073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   return (
-    <>
+    <div>
       <div
         className="bg-fixed bg-no-repeat bg-cover -z-50 flex flex-col justify-between h-screen"
         style={{ backgroundImage: `url(${fetchedUrl})`, opacity: "revert" }}
       >
-        <div className="flex justify-between  pb-4">
+        <div className="flex justify-between  pb-4 container">
           <div className="pt-5">
             <h2
-              className="text-lime-500 lg:text-2xl md:text-xl ml-4 font-bold"
+              className="text-lime-500 lg:text-2xl md:text-xl font-bold"
               style={{ textShadow: "1px 1px black" }}
             >
               <span className="text-[#f2ffed]">My</span> RESTAU
               <span className="text-[#f2ffed]">RANTs!</span>
             </h2>
           </div>
-          <ul className="flex justify-end mr-16 pt-5">
+          <ul className="flex justify-end pt-5">
             <li
               className="text-white text-xl font-bold text-center w-24 h-10 pt-1 hover:cursor-pointer hover:bg-green-500 hover:text-black hover:rounded-lg"
               data-bs-toggle="modal"
@@ -36,7 +36,7 @@ const Home = (props) => {
               Login
             </li>
             <li
-              className="text-white text-xl font-bold text-center w-24 h-10 pt-1 ml-4 hover:cursor-pointer hover:bg-green-500 hover:text-black hover:rounded-lg"
+              className="text-white text-xl font-bold text-center w-24 h-10 pt-1 hover:cursor-pointer hover:bg-green-500 hover:text-black hover:rounded-lg"
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop2"
             >
@@ -70,7 +70,7 @@ const Home = (props) => {
       {/* modal code for register */}
 
       <RegisterModal />
-    </>
+    </div>
   );
 };
 
