@@ -5,7 +5,7 @@ const Footer = () => {
   const year = date.getFullYear();
   return (
     <div className="h-12 bg-black">
-    <div className="text-white container">
+    <div className="text-white container mx-auto px-14">
       <p className="pt-3"> &#169; Copyright {year}</p>
     </div>
     </div>

@@ -9,7 +9,7 @@ const Navbar = (props) => {
 
   return (
     <div className="h-[9vh] bg-black flex items-center">
-      <div className="flex flex-row justify-between container">
+      <div className="flex flex-row justify-between container mx-auto px-14 ">
         <div>
           <h2 className="text-lime-500 lg:text-2xl font-bold md:text-xl font-sans">
             <span className="text-white">My</span> RESTAU
