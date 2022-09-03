@@ -1,13 +1,9 @@
 import React from "react";
 import Footer from "../components/footer/Footer";
-import PropTypes from "prop-types";
+
 import Navbar from "../components/navbar/Navbar";
 
 const Settings = () => {
-  Settings.propTypes = {
-    logout: PropTypes.func.isRequired,
-  };
-
   return (
     <div className="h-screen">
       <Navbar />

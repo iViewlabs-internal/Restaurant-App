@@ -26,7 +26,7 @@ const ViewMore = (props) => {
             <img src={props.logo} alt={props.name} className="w-[45vw] h-72" />
             <button
               type="button"
-              className="text-white opacity-100 bg-opacity-100 font-bold bg-black absolute -top-4 -right-5 h-6 w-8 btn-close"
+              className="text-black opacity-100 bg-opacity-100 font-bold bg-white absolute top-0 right-0 h-6 w-8 btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             >
@@ -43,9 +43,13 @@ const ViewMore = (props) => {
               <b>Opening Hours for Today: </b>
               {props.opens_at} To {props.closes_at}{" "}
               {props.is_closed === true ? (
-                <span className="text-red-500 font-bold">Closed</span>
+                <span>
+                  (<span className="text-red-500 font-bold"> Closed </span>)
+                </span>
               ) : (
-                <span className="text-green-600 font-bold">Open</span>
+                <span>
+                  (<span className="text-green-600 font-bold"> Open </span>)
+                </span>
               )}
             </h2>
           </div>

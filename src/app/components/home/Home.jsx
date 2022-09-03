@@ -1,14 +1,8 @@
 import Footer from "../footer/Footer";
-import PropTypes from "prop-types";
 import LoginModal from "../../modals/LoginModal";
 import RegisterModal from "../../modals/RegisterModal";
 
-const Home = (props) => {
-  Home.propTypes = {
-    loggedIn: PropTypes.func.isRequired,
-    login: PropTypes.bool.isRequired,
-  };
-
+const Home = () => {
   const fetchedUrl =
     "https://images.pexels.com/photos/1237073/pexels-photo-1237073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   return (
@@ -65,7 +59,7 @@ const Home = (props) => {
 
       {/* modal component for login */}
 
-      <LoginModal loggedIn={props.loggedIn} login={props.login} />
+      <LoginModal />
 
       {/* modal code for register */}
 
