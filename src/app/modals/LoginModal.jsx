@@ -1,12 +1,7 @@
 import React from "react";
 import Login from "../pages/Login";
-import PropTypes from "prop-types";
 
-const LoginModal = (props) => {
-  LoginModal.propTypes = {
-    loggedIn: PropTypes.func.isRequired,
-    login: PropTypes.bool.isRequired,
-  };
+const LoginModal = () => {
   return (
     <div
       className="modal fade"
@@ -31,7 +26,7 @@ const LoginModal = (props) => {
             </button>
           </div>
           <div className="modal-body">
-            <Login loggedIn={props.loggedIn} login={props.login} />
+            <Login />
           </div>
         </div>
       </div>

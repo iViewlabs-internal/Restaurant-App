@@ -1,9 +1,21 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-const Login = (props) => {
+
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../redux/actions/index";
+
+const Login = () => {
   const [logEmail, setLogEmail] = useState("");
   const [logPassword, setLogPassword] = useState("");
+  const myLoginState = useSelector((state) => state.changeLogin);
+  console.log(myLoginState);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  const loggedIn = () => {
+    sessionStorage.setItem("timer", 5000);
+    dispatch(login());
+    navigate("/search");
+  };
 
   const log = () => {
     if (logEmail === "" && logPassword === "") {
@@ -27,8 +39,7 @@ const Login = (props) => {
       logEmail === localStorage.getItem("email") &&
       logPassword === localStorage.getItem("password")
     ) {
-      window.location.href = "/search";
-      props.loggedIn();
+      loggedIn();
       setLogEmail("");
       setLogPassword("");
     } else {
@@ -36,10 +47,6 @@ const Login = (props) => {
       setLogPassword("");
       alert("incorrect Credencials");
     }
-  };
-  Login.propTypes = {
-    loggedIn: PropTypes.func.isRequired,
-    login: PropTypes.bool.isRequired,
   };
 
   return (
@@ -66,14 +73,13 @@ const Login = (props) => {
       />
       <br />
       <br />
-      <Link to={props.login ? "/search" : "/"}>
-        <button
-          onClick={log}
-          className="h-12 w-full border border-solid bg-green-600 text-white font-bold hover:bg-green-500"
-        >
-          Login
-        </button>
-      </Link>
+
+      <button
+        onClick={log}
+        className="h-12 w-full border border-solid bg-green-600 text-white font-bold hover:bg-green-500"
+      >
+        Login
+      </button>
     </>
   );
 };

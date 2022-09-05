@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import Loader from "./Loader";
 import ViewMore from "../modals/ViewMore";
 import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
 
-const Search = (props) => {
+const Search = () => {
   const [input, setInput] = useState("");
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,10 +21,6 @@ const Search = (props) => {
 
   const d = new Date();
   const day = days[d.getDay()];
-
-  Search.propTypes = {
-    logout: PropTypes.func.isRequired,
-  };
 
   const fetchApi = () => {
     fetch(
@@ -54,7 +49,7 @@ const Search = (props) => {
 
   return (
     <div>
-      <Navbar logout={props.logout} />
+      <Navbar />
 
       <div
         className="flex flex-col justify-center items-center bg-no-repeat bg-cover h-[58.4vh]"
