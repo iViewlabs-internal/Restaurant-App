@@ -1,8 +1,7 @@
 const initialState = true;
 
 const changeLogOut = ((state=initialState,action)=>{
-        if(action.type === "LOGIOUT"){
-            console.log(state)
+        if(action.type === "LOGOUT"){
             return state = false;
         }else{
             return state = true;

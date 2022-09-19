@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./app/components/home/Home";
-import Search from "./app/view/Search";
-import Settings from "./app/pages/Settings";
+import Home from "./app/pages/home/Home";
+import Search from "./app/pages/search/Search";
+import Settings from "./app/pages/settings/Settings";
 
 const App = () => {
   return (
