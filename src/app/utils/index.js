@@ -5,12 +5,10 @@ const days = [
     "wednesday",
     "thursday",
     "friday",
-    "saturday",
+    "saturday"
   ];
   const d = new Date();
 
  export const day = days[d.getDay()];
 
  export const year = d.getFullYear();
-
- 
