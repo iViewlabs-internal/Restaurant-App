@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../redux/actions/index";
+import { login } from "../../redux/actions/index";
 
 const Login = () => {
   const [logEmail, setLogEmail] = useState("");

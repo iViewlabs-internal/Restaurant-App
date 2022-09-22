@@ -1,8 +1,9 @@
-import Footer from "../footer/Footer";
+import Footer from "../../components/footer/Footer";
 import LoginModal from "../../modals/LoginModal";
 import RegisterModal from "../../modals/RegisterModal";
 
 const Home = () => {
+
   const fetchedUrl =
     "https://images.pexels.com/photos/1237073/pexels-photo-1237073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   return (

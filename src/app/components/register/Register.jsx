@@ -26,7 +26,6 @@ function Register() {
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data) => {
-    // console.log(JSON.stringify(data, null, 2));
     localStorage.setItem("email", data.email);
     localStorage.setItem("password", data.password);
     alert(

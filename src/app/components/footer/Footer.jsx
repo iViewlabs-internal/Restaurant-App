@@ -1,12 +1,11 @@
 import React from "react";
+import { year } from "../../utils";
 
 const Footer = () => {
-  const date = new Date();
-  const year = date.getFullYear();
   return (
     <div className="h-12 bg-black">
-    <div className="text-white container mx-auto px-14">
-      <p className="pt-3"> &#169; Copyright {year}</p>
+    <div className="text-white container text-center">
+      <p className="pt-3"> Copyright &#169; {year} Iview Labs Pvt Ltd. All Rights Reserved</p>
     </div>
     </div>
   );
