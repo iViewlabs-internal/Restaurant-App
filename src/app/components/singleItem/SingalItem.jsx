@@ -5,7 +5,7 @@ import { day } from '../../utils';
 
 const SingalItem = (props) => {
     SingalItem.propTypes = {
-        item: PropTypes.string.isRequired,
+        item: PropTypes.object.isRequired,
         index: PropTypes.number.isRequired,
       };
       

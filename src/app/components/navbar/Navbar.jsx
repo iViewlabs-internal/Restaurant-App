@@ -17,9 +17,9 @@ const Navbar = () => {
         </div>
         <div className="flex">
           {/* {window.location.href === "http://localhost:3000/search" ? ( */}
-
           {window.location.href ===
           "https://my-restaurant1.netlify.app/search" ? (
+
             <Link to="/settings">
               <button className="bg-white text-black font-bold h-9 w-24 mr-9 rounded-md hover:bg-green-500 hover:text-white">
                 Settings

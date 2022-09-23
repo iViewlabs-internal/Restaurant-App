@@ -4,25 +4,11 @@ import Navbar from "../../components/navbar/Navbar";
 import Loader from "../../components/loader/Loader";
 import SingalItem from "../../components/singleItem/SingalItem";
 import "./search.css";
+import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
 
 const Search = () => {
   const [input, setInput] = useState("");
-  const [apiData, setApiData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchApi = () => {
-    fetch(
-      "https://random-data-api.com/api/restaurant/random_restaurant?size=100"
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        let apidata = data;
-        setLoading(false);
-        setApiData(apidata);
-      });
-  };
+  const responseInfo = useGetAllRestaurantsQuery();
 
   useEffect(() => {
     const timerStorage =
@@ -30,7 +16,7 @@ const Search = () => {
         ? 5000
         : sessionStorage.getItem("timer");
     const intervalId = setInterval(() => {
-      fetchApi();
+      responseInfo.refetch();
     }, timerStorage);
     return () => clearInterval(intervalId);
   }, []);
@@ -58,12 +44,12 @@ const Search = () => {
       </div>
 
       <div className="bg-[#5d625b]">
-        {loading === true ? (
+        {responseInfo.isLoading === true ? (
           <Loader />
         ) : (
           <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10 container mx-auto px-14">
-            {apiData &&
-              apiData
+            {responseInfo.data &&
+              responseInfo.data
                 .filter((val) => {
                   const typeVal = val.type.toString();
                   if (input === "") {
@@ -76,7 +62,6 @@ const Search = () => {
                     return;
                   }
                 })
-
                 .map((item, index) => {
                   return <SingalItem item={item} index={index} key={index} />;
                 })}
