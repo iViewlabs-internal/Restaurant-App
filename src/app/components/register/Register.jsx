@@ -1,6 +1,8 @@
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
   const validationSchema = Yup.object().shape({
@@ -8,7 +10,9 @@ function Register() {
       .required("Username is required")
       .min(3, "Username must be at least 3 characters")
       .max(15, "Username must not exceed 20 characters"),
-    email: Yup.string().required("Email is required").email("Email is invalid"),
+    email: Yup.string()
+    .required("Email is required")
+    .email("Email is invalid"),
     password: Yup.string()
       .required("Password is required")
       .min(6, "Password must be at least 6 characters")
@@ -28,12 +32,14 @@ function Register() {
   const onSubmit = (data) => {
     localStorage.setItem("email", data.email);
     localStorage.setItem("password", data.password);
-    alert(
-      "You gets register Successfully . Now you Can Login with your Credentials!"
-    );
-    window.location.href = "/";
+    toast.success("You Gets Registered Successfuly")
+    setTimeout(() => {
+      window.location.href = "/";
+    },3000);
   };
   return (
+    <>
+    <ToastContainer autoClose={3000}/>
     <div className="register-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
@@ -44,7 +50,7 @@ function Register() {
             {...register("username")}
             className={`form-control ${errors.username ? "is-invalid" : ""}`}
           />
-        
+
           <div className="invalid-feedback">{errors.username?.message}</div>
           <br />
         </div>
@@ -56,7 +62,7 @@ function Register() {
             {...register("email")}
             className={`form-control ${errors.email ? "is-invalid" : ""}`}
           />
-       
+
           <div className="invalid-feedback">{errors.email?.message}</div>
           <br />
         </div>
@@ -68,7 +74,7 @@ function Register() {
             {...register("password")}
             className={`form-control ${errors.password ? "is-invalid" : ""}`}
           />
-       
+
           <div className="invalid-feedback">{errors.password?.message}</div>
           <br />
         </div>
@@ -83,7 +89,7 @@ function Register() {
               errors.confirmPassword ? "is-invalid" : ""
             }`}
           />
-       
+
           <div className="invalid-feedback">
             {errors.confirmPassword?.message}
           </div>
@@ -99,6 +105,7 @@ function Register() {
         </div>
       </form>
     </div>
+    </>
   );
 }
 export default Register;

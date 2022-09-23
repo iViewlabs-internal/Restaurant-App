@@ -1,22 +1,19 @@
 import Footer from "../../components/footer/Footer";
 import LoginModal from "../../modals/LoginModal";
 import RegisterModal from "../../modals/RegisterModal";
+import "./home.css";
 
 const Home = () => {
-
-  const fetchedUrl =
-    "https://images.pexels.com/photos/1237073/pexels-photo-1237073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   return (
     <div>
       <div
         className="bg-fixed bg-no-repeat bg-cover -z-50 flex flex-col justify-between h-screen"
-        style={{ backgroundImage: `url(${fetchedUrl})`, opacity: "revert" }}
+        id="header-restaurant-div"
       >
         <div className="flex justify-between  pb-4 container mx-auto px-14">
           <div className="pt-5">
             <h2
-              className="text-lime-500 lg:text-2xl md:text-xl font-bold"
-              style={{ textShadow: "1px 1px black" }}
+              className="text-lime-500 lg:text-2xl md:text-xl font-bold heading-top-restaurant"
             >
               <span className="text-[#f2ffed]">My</span> RESTAU
               <span className="text-[#f2ffed]">RANTs!</span>
@@ -59,11 +56,9 @@ const Home = () => {
       </div>
 
       {/* modal component for login */}
-
       <LoginModal />
 
       {/* modal code for register */}
-
       <RegisterModal />
     </div>
   );
