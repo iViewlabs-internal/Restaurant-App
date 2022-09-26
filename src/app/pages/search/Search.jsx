@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import Loader from "../../components/loader/Loader";
-import SingalItem from "../../components/singleItem/SingalItem";
+import SingalItem from "../../components/single-item/SingalItem";
 import "./search.css";
 import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
 
@@ -67,6 +67,16 @@ const Search = () => {
                 })}
           </div>
         )}
+       {/* <button onClick={() => setPage(page - 1)} isLoading={isFetching}>
+          Previous
+        </button>
+        <button
+          onClick={() => setPage(page + 1)}
+          isLoading={isFetching}
+        >
+         Next
+        </button> */}
+
       </div>
       <Footer />
     </div>

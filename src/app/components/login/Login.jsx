@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,43 +16,47 @@ const Login = () => {
   const loggedIn = () => {
     sessionStorage.setItem("timer", 5000);
     dispatch(login());
-    navigate("/search");
+    setTimeout(() => {
+      navigate("/search");
+    }, 3000);
   };
 
   const log = () => {
     if (logEmail === "" && logPassword === "") {
-      alert("Bad Try! Please Enter your Email and Password. ");
+      toast.error("Bad Try! Please Enter your Email and Password. ");
     } else if (logEmail === "") {
-      alert("Email is missing");
+      toast.error("Email is missing");
     } else if (logPassword === "") {
-      alert("Password is missing");
+      toast.error("Password is missing");
     } else if (
       logEmail !== localStorage.getItem("email") &&
       logPassword === localStorage.getItem("password")
     ) {
-      alert("Incorrect Email");
+      toast.error("Incorrect Email");
     } else if (
       logEmail === localStorage.getItem("email") &&
       logPassword !== localStorage.getItem("password")
     ) {
       setLogPassword("");
-      alert("Incorrect Password");
+      toast.error("Incorrect Password");
     } else if (
       logEmail === localStorage.getItem("email") &&
       logPassword === localStorage.getItem("password")
     ) {
-      loggedIn();
+      toast.success("Logged In Successfuly!");
       setLogEmail("");
       setLogPassword("");
+      loggedIn();
     } else {
       setLogEmail("");
       setLogPassword("");
-      alert("incorrect Credencials");
+      toast.error("incorrect Credencials");
     }
   };
 
   return (
     <>
+      <ToastContainer autoClose={3000} />
       <input
         type="email"
         placeholder="Email"
