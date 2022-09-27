@@ -1,14 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import Loader from "../../components/loader/Loader";
 import SingalItem from "../../components/single-item/SingalItem";
 import "./search.css";
 import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
-
+import Pagination from "../../components/pagination/Pagination";
+let PageSize = 12;
 const Search = () => {
   const [input, setInput] = useState("");
   const responseInfo = useGetAllRestaurantsQuery();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return responseInfo.data?.slice(firstPageIndex, lastPageIndex);
+  }, [responseInfo.data, currentPage]);
 
   useEffect(() => {
     const timerStorage =
@@ -43,40 +51,41 @@ const Search = () => {
         ></input>
       </div>
 
-      <div className="bg-[#5d625b]">
+      <div className="bg-[#93e1af]">
         {responseInfo.isLoading === true ? (
           <Loader />
         ) : (
-          <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10 container mx-auto px-14">
-            {responseInfo.data &&
-              responseInfo.data
-                .filter((val) => {
-                  const typeVal = val.type.toString();
-                  if (input === "") {
-                    return val;
-                  } else if (
-                    typeVal.toLowerCase().includes(input.toLowerCase())
-                  ) {
-                    return val;
-                  } else {
-                    return;
-                  }
-                })
-                .map((item, index) => {
-                  return <SingalItem item={item} index={index} key={index} />;
-                })}
-          </div>
+          <>
+            <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-y-4 gap-x-4 pt-10 pb-10 container mx-auto px-14">
+              {currentTableData &&
+                currentTableData
+                  .filter((val) => {
+                    const typeVal = val.type.toString();
+                    if (input === "") {
+                      return val;
+                    } else if (
+                      typeVal.toLowerCase().includes(input.toLowerCase())
+                    ) {
+                      return val;
+                    } else {
+                      return;
+                    }
+                  })
+                  .map((item, index) => {
+                    return <SingalItem item={item} index={index} key={index} />;
+                  })}
+            </div>
+            <div className="pagination-div">
+            <Pagination
+              className="pagination-bar"
+              currentPage={currentPage}
+              totalCount={responseInfo.data.length}
+              pageSize={PageSize}
+              onPageChange={(page) => setCurrentPage(page)}
+            />
+            </div>
+          </>
         )}
-       {/* <button onClick={() => setPage(page - 1)} isLoading={isFetching}>
-          Previous
-        </button>
-        <button
-          onClick={() => setPage(page + 1)}
-          isLoading={isFetching}
-        >
-         Next
-        </button> */}
-
       </div>
       <Footer />
     </div>

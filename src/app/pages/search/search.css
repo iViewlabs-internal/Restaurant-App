@@ -4,3 +4,8 @@
         background-color: #b5a7a7; 
         background-blend-mode: darken;
 }
+.pagination-div{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 3vh;
+}
