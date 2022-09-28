@@ -6,8 +6,10 @@ import SingalItem from "../../components/single-item/SingalItem";
 import "./search.css";
 import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
 import Pagination from "../../components/pagination/Pagination";
+// import { useNavigate } from "react-router-dom";
 let PageSize = 12;
 const Search = () => {
+  // const navigate = useNavigate();
   const [input, setInput] = useState("");
   const responseInfo = useGetAllRestaurantsQuery();
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,6 +31,29 @@ const Search = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  let mybutton = document.getElementById("myBtn");
+  useEffect(() => {
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 250 ||
+        document.documentElement.scrollTop > 250
+      ) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+  });
+
+  const topFunction = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+ 
   return (
     <div>
       <Navbar />
@@ -37,7 +62,7 @@ const Search = () => {
         className="flex flex-col justify-center items-center bg-no-repeat bg-cover h-[58.4vh]"
         id="header-search-div"
       >
-        <h2 className="lg:text-2xl md:text-xl sm:text-sm font-bold text-[#f2ffed] pb-10 font-serif  z-50">
+        <h2 className="lg:text-2xl md:text-xl sm:text-sm font-bold text-[#f2ffed] pb-10 font-serif z-50">
           Search The Type of The Restaurant And See The Matches One By One !
         </h2>
         <input
@@ -51,7 +76,7 @@ const Search = () => {
         ></input>
       </div>
 
-      <div className="bg-[#93e1af]">
+      <div className="bg-[#4c4f4d]">
         {responseInfo.isLoading === true ? (
           <Loader />
         ) : (
@@ -76,16 +101,19 @@ const Search = () => {
                   })}
             </div>
             <div className="pagination-div">
-            <Pagination
-              className="pagination-bar"
-              currentPage={currentPage}
-              totalCount={responseInfo.data.length}
-              pageSize={PageSize}
-              onPageChange={(page) => setCurrentPage(page)}
-            />
+              <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={responseInfo.data.length}
+                pageSize={PageSize}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
             </div>
           </>
         )}
+      </div>
+      <div onClick={topFunction} id="myBtn">
+        <i className="fa-solid fa-arrow-up"></i>
       </div>
       <Footer />
     </div>

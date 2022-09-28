@@ -1,12 +1,17 @@
-const initialState = false;
+import {LOGIN} from "../actions/index";
 
-const changeLogin = ((state=initialState,action)=>{
-        if(action.type === "LOGIN"){
-            console.log(state)
-            return state = true;
-        }else{
-            return state = false;
-        }
-})
-
-export default changeLogin;
+let initialState = {
+  login: false,
+};
+export const changeLogin = (store = initialState, action) => {
+  switch (action.type) {
+    case LOGIN:
+      return {
+        ...store,
+        login: action.payload,
+      };
+    default: {
+      return store;
+    }
+  }
+};

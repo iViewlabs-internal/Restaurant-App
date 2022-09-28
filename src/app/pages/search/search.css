@@ -1,11 +1,33 @@
-#header-search-div{
-        background-image: url("https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600");
-        background-position: left;
-        background-color: #b5a7a7; 
-        background-blend-mode: darken;
+#header-search-div {
+  background-image: url("https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600");
+  background-position: left;
+  background-color: #b5a7a7;
+  background-blend-mode: darken;
 }
-.pagination-div{
-        display: flex;
-        justify-content: center;
-        padding-bottom: 3vh;
+.pagination-div {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3vh;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 7px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: rgb(23, 165, 23);
+  color: white;
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
 }

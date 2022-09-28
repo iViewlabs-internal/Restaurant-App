@@ -10,7 +10,7 @@ const SingalItem = (props) => {
   };
 
   return (
-    <div className="h-auto max-w-2xl border bg-[#97878c] border-black rounded-lg flex flex-col">
+    <div className="h-auto max-w-2xl border bg-[#7a7373] border-black rounded-lg flex flex-col">
       <div className="flex p-4 bg-white pl-8">
         <img
           src={props.item.logo}
@@ -29,7 +29,7 @@ const SingalItem = (props) => {
       <hr />
       <div className="pt-6 pl-2 pr-1">
         <p>
-          <b>Description:-</b> {`${props.item.description}`.slice(0, 180)}.....
+          <b>Description:-</b> {props.item.description.slice(0, 180)}.....
         </p>
         <button
           type="button"
