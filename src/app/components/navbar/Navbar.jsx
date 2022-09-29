@@ -1,10 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logout } from "../../redux/actions/index";
+import { isLogin } from "../../redux/actions/index";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
+  const logOut = ()=>{
+    dispatch(isLogin(false));
+    localStorage.removeItem("login"); 
+  } 
+ 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if(localStorage.getItem("login") === null){
+        navigate("/")
+      }
+    },500);
+    return () => clearInterval(intervalId);
+  }, []);
   return (
     <div className="h-[9vh] bg-black flex items-center">
       <div className="flex flex-row justify-between container mx-auto px-14 ">
@@ -15,7 +30,7 @@ const Navbar = () => {
           </h2>
         </div>
         <div className="flex">
-          {/* {window.location.href ===
+          {/* {window.location.href === 
           "https://my-restaurant1.netlify.app/search" ? ( */}
           {window.location.href === "http://localhost:3000/search" ? (
 
@@ -34,9 +49,7 @@ const Navbar = () => {
           {/* <Link to="/"> */}
           <button
             className="bg-white text-black font-bold h-9 w-24 rounded-md hover:bg-green-500 hover:text-white"
-            onClick={() => {
-              dispatch(logout());
-            }}
+            onClick={logOut}
           >
             LogOut
           </button>

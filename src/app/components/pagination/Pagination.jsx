@@ -53,7 +53,7 @@ const Pagination = (props) => {
         })}
         onClick={onPrevious}
       >
-        <div className="arrow left" />
+        <div className="arrow left left-arrow" />
       </li>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {

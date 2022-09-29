@@ -30,8 +30,16 @@ function Register() {
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data) => {
-    localStorage.setItem("email", data.email);
-    localStorage.setItem("password", data.password);
+    // localStorage.setItem("email", data.email);
+    // localStorage.setItem("password", data.password);
+    const register = {
+      username:data.username,
+      email : data.email,
+      password : data.password,
+    }
+
+    localStorage.setItem("register" , JSON.stringify(register))
+
     toast.success("You Gets Registered Successfuly")
     setTimeout(() => {
       window.location.href = "/";

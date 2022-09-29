@@ -7,7 +7,8 @@
       height: 32px;
       text-align: center;
       margin: auto 4px;
-      color: rgba(0, 0, 0, 0.87);
+      // color: rgba(0, 0, 0, 0.87);
+      color: white;
       display: flex;
       box-sizing: border-box;
       align-items: center;
@@ -22,14 +23,16 @@
         cursor: default;
       }
       &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: rgba(0, 0, 0, 0.10);
         cursor: pointer;
       }
   
       &.selected {
         background-color: rgba(0, 0, 0, 0.50);
       }
-  
+      .left-arrow{
+        color: white !important;
+      }
       .arrow {
         &::before {
           position: relative;
@@ -45,6 +48,7 @@
   
         &.left {
           transform: rotate(-135deg) translate(-50%);
+          margin-bottom: 1.5vh;
         }
   
         &.right {
