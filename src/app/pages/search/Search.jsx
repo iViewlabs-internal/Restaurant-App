@@ -6,10 +6,9 @@ import SingalItem from "../../components/single-item/SingalItem";
 import "./search.css";
 import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
 import Pagination from "../../components/pagination/Pagination";
-// import { useNavigate } from "react-router-dom";
+
 let PageSize = 12;
 const Search = () => {
-  // const navigate = useNavigate();
   const [input, setInput] = useState("");
   const responseInfo = useGetAllRestaurantsQuery();
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,11 +52,10 @@ const Search = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
- 
+
   return (
     <div>
       <Navbar />
-
       <div
         className="flex flex-col justify-center items-center bg-no-repeat bg-cover h-[58.4vh]"
         id="header-search-div"
@@ -75,7 +73,6 @@ const Search = () => {
           className="h-12 w-[45%] border rounded-lg border-slate-800 lg:text-lg sm:text-sm pl-5"
         ></input>
       </div>
-
       <div className="bg-[#4c4f4d]">
         {responseInfo.isLoading === true ? (
           <Loader />

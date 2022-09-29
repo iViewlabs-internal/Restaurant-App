@@ -13,10 +13,10 @@ const Login = () => {
   let navigate = useNavigate();
   const loggedIn = () => {
     const login = {
-      email : logEmail,
-      password : logPassword
-    }
-    localStorage.setItem("login",JSON.stringify(login))
+      email: logEmail,
+      password: logPassword,
+    };
+    localStorage.setItem("login", JSON.stringify(login));
     sessionStorage.setItem("timer", 5000);
     dispatch(isLogin(true));
     // console.log(myLoginState.rootReducer.changeLogin.login)
@@ -26,9 +26,8 @@ const Login = () => {
   };
 
   const log = () => {
-
-      const myObj  = localStorage.getItem("register");
-      const registerObj = JSON.parse(myObj);
+    const myObj = localStorage.getItem("register");
+    const registerObj = JSON.parse(myObj);
 
     if (logEmail === "" && logPassword === "") {
       toast.error("Bad Try! Please Enter your Email and Password. ");
@@ -48,7 +47,8 @@ const Login = () => {
       setLogPassword("");
       toast.error("Incorrect Password");
     } else if (
-      registerObj.email === logEmail && registerObj.password === logPassword
+      registerObj.email === logEmail &&
+      registerObj.password === logPassword
     ) {
       toast.success("Logged In Successfuly!");
       setLogEmail("");

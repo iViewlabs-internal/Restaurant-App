@@ -1,5 +1,5 @@
 import React from "react";
-import ViewMore from "../../modals/ViewMore";
+import ViewMore from "../../modals/viewButton/ViewMore";
 import PropTypes from "prop-types";
 import { day } from "../../utils";
 
