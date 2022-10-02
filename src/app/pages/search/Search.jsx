@@ -7,6 +7,7 @@ import "./search.css";
 import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
 import Pagination from "../../components/pagination/Pagination";
 
+let tempVal = true;
 let PageSize = 10;
 const Search = () => {
   const [input, setInput] = useState("");
@@ -17,7 +18,7 @@ const Search = () => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return responseInfo.data?.slice(firstPageIndex, lastPageIndex);
-  }, [responseInfo.data, currentPage]);
+  }, [responseInfo.data, currentPage,tempVal]);
 
   useEffect(() => {
     const timerStorage =
@@ -84,12 +85,18 @@ const Search = () => {
                   .filter((val) => {
                     const typeVal = val.type.toString();
                     if (input === "") {
+                      tempVal = true;
                       return val;
                     } else if (
                       typeVal.toLowerCase().includes(input.toLowerCase())
                     ) {
+                      tempVal = true;
                       return val;
-                    } else {
+                    } else if (
+                      typeVal.toLowerCase().includes(input.toLowerCase()) ===
+                      false
+                    ) {
+                      tempVal = false;
                       return;
                     }
                   })
@@ -97,14 +104,19 @@ const Search = () => {
                     return <SingalItem item={item} index={index} key={index} />;
                   })}
             </div>
+
             <div className="pagination-div">
-              <Pagination
-                className="pagination-bar"
-                currentPage={currentPage}
-                totalCount={responseInfo.data.length}
-                pageSize={PageSize}
-                onPageChange={(page) => setCurrentPage(page)}
-              />
+              {tempVal ? (
+                <Pagination
+                  className="pagination-bar"
+                  currentPage={currentPage}
+                  totalCount={responseInfo.data.length}
+                  pageSize={PageSize}
+                  onPageChange={(page) => setCurrentPage(page)}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </>
         )}

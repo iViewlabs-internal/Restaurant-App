@@ -9,7 +9,7 @@ export const restaurantApi = createApi({
   endpoints: (builder) => ({
     getAllRestaurants: builder.query({
       query: () => ({
-        url: "",
+        url: "/restaurant/random_restaurant?size=100",
         method: "GET",
       }),
     }),
