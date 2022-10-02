@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+import config from "../../config/config.json"
 export const restaurantApi = createApi({
   reducerPath: "restaurantApi",
   baseQuery: fetchBaseQuery({
     baseUrl:
-      "https://random-data-api.com/api/restaurant/random_restaurant?size=100",
+      config.SERVER_URL,
   }),
   endpoints: (builder) => ({
     getAllRestaurants: builder.query({

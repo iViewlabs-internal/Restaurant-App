@@ -63,8 +63,8 @@ const Pagination = (props) => {
             </li>
           );
         }
-
-        return (
+        else{
+          return (
           <li
             key={index}
             className={classnames("pagination-item", {
@@ -75,6 +75,9 @@ const Pagination = (props) => {
             {pageNumber}
           </li>
         );
+
+        }
+        
       })}
       <li
         className={classnames("pagination-item", {

@@ -7,7 +7,7 @@ import "./search.css";
 import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
 import Pagination from "../../components/pagination/Pagination";
 
-let PageSize = 12;
+let PageSize = 10;
 const Search = () => {
   const [input, setInput] = useState("");
   const responseInfo = useGetAllRestaurantsQuery();
