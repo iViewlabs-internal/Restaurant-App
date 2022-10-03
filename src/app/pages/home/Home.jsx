@@ -1,6 +1,6 @@
 import Footer from "../../components/footer/Footer";
-import LoginModal from "../../modals/LoginModal";
-import RegisterModal from "../../modals/RegisterModal";
+import LoginModal from "../../modals/login/LoginModal";
+import RegisterModal from "../../modals/register/RegisterModal";
 import "./home.css";
 
 const Home = () => {
@@ -12,9 +12,7 @@ const Home = () => {
       >
         <div className="flex justify-between  pb-4 container mx-auto px-14">
           <div className="pt-5">
-            <h2
-              className="text-lime-500 lg:text-2xl md:text-xl font-bold heading-top-restaurant"
-            >
+            <h2 className="text-lime-500 lg:text-2xl md:text-xl font-bold heading-top-restaurant">
               <span className="text-[#f2ffed]">My</span> RESTAU
               <span className="text-[#f2ffed]">RANTs!</span>
             </h2>

@@ -6,10 +6,10 @@ import SingalItem from "../../components/single-item/SingalItem";
 import "./search.css";
 import { useGetAllRestaurantsQuery } from "../../redux/services/restaurants";
 import Pagination from "../../components/pagination/Pagination";
-// import { useNavigate } from "react-router-dom";
-let PageSize = 12;
+
+let tempVal = true;
+let PageSize = 10;
 const Search = () => {
-  // const navigate = useNavigate();
   const [input, setInput] = useState("");
   const responseInfo = useGetAllRestaurantsQuery();
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +18,7 @@ const Search = () => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return responseInfo.data?.slice(firstPageIndex, lastPageIndex);
-  }, [responseInfo.data, currentPage]);
+  }, [responseInfo.data, currentPage,tempVal]);
 
   useEffect(() => {
     const timerStorage =
@@ -53,11 +53,10 @@ const Search = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
- 
+
   return (
     <div>
       <Navbar />
-
       <div
         className="flex flex-col justify-center items-center bg-no-repeat bg-cover h-[58.4vh]"
         id="header-search-div"
@@ -75,7 +74,6 @@ const Search = () => {
           className="h-12 w-[45%] border rounded-lg border-slate-800 lg:text-lg sm:text-sm pl-5"
         ></input>
       </div>
-
       <div className="bg-[#4c4f4d]">
         {responseInfo.isLoading === true ? (
           <Loader />
@@ -87,12 +85,18 @@ const Search = () => {
                   .filter((val) => {
                     const typeVal = val.type.toString();
                     if (input === "") {
+                      tempVal = true;
                       return val;
                     } else if (
                       typeVal.toLowerCase().includes(input.toLowerCase())
                     ) {
+                      tempVal = true;
                       return val;
-                    } else {
+                    } else if (
+                      typeVal.toLowerCase().includes(input.toLowerCase()) ===
+                      false
+                    ) {
+                      tempVal = false;
                       return;
                     }
                   })
@@ -100,14 +104,19 @@ const Search = () => {
                     return <SingalItem item={item} index={index} key={index} />;
                   })}
             </div>
+
             <div className="pagination-div">
-              <Pagination
-                className="pagination-bar"
-                currentPage={currentPage}
-                totalCount={responseInfo.data.length}
-                pageSize={PageSize}
-                onPageChange={(page) => setCurrentPage(page)}
-              />
+              {tempVal ? (
+                <Pagination
+                  className="pagination-bar"
+                  currentPage={currentPage}
+                  totalCount={responseInfo.data.length}
+                  pageSize={PageSize}
+                  onPageChange={(page) => setCurrentPage(page)}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </>
         )}

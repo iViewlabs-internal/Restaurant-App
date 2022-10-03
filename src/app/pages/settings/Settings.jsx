@@ -1,13 +1,11 @@
 import React from "react";
 import Footer from "../../components/footer/Footer";
-
 import Navbar from "../../components/navbar/Navbar";
 
 const Settings = () => {
   return (
     <div className="h-screen">
       <Navbar />
-
       <div className="bg-slate-500 h-[83.7vh] w-auto flex flex-col items-center pt-36">
         <h3 className="text-lg mb-5 text-[#f2ffed] font-bold">
           Set The Interval (Refresh) Time of Fetching Data

@@ -1,8 +1,8 @@
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
   const validationSchema = Yup.object().shape({
@@ -10,9 +10,7 @@ function Register() {
       .required("Username is required")
       .min(3, "Username must be at least 3 characters")
       .max(15, "Username must not exceed 20 characters"),
-    email: Yup.string()
-    .required("Email is required")
-    .email("Email is invalid"),
+    email: Yup.string().required("Email is required").email("Email is invalid"),
     password: Yup.string()
       .required("Password is required")
       .min(6, "Password must be at least 6 characters")
@@ -30,89 +28,84 @@ function Register() {
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data) => {
-    // localStorage.setItem("email", data.email);
-    // localStorage.setItem("password", data.password);
     const register = {
-      username:data.username,
-      email : data.email,
-      password : data.password,
-    }
-
-    localStorage.setItem("register" , JSON.stringify(register))
-
-    toast.success("You Gets Registered Successfuly")
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    };
+    localStorage.setItem("register", JSON.stringify(register));
+    toast.success("You Gets Registered Successfuly");
     setTimeout(() => {
       window.location.href = "/";
-    },3000);
+    }, 3000);
   };
+
   return (
     <>
-    <ToastContainer autoClose={3000}/>
-    <div className="register-form">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group">
-          <input
-            name="username"
-            type="text"
-            placeholder="Your Username"
-            {...register("username")}
-            className={`form-control ${errors.username ? "is-invalid" : ""}`}
-          />
+      <ToastContainer autoClose={3000} />
+      <div className="register-form">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-group">
+            <input
+              name="username"
+              type="text"
+              placeholder="Your Username"
+              {...register("username")}
+              className={`form-control ${errors.username ? "is-invalid" : ""}`}
+            />
 
-          <div className="invalid-feedback">{errors.username?.message}</div>
-          <br />
-        </div>
-        <div className="form-group">
-          <input
-            name="email"
-            type="text"
-            placeholder="Your Email"
-            {...register("email")}
-            className={`form-control ${errors.email ? "is-invalid" : ""}`}
-          />
-
-          <div className="invalid-feedback">{errors.email?.message}</div>
-          <br />
-        </div>
-        <div className="form-group">
-          <input
-            name="password"
-            type="password"
-            placeholder="Your Password"
-            {...register("password")}
-            className={`form-control ${errors.password ? "is-invalid" : ""}`}
-          />
-
-          <div className="invalid-feedback">{errors.password?.message}</div>
-          <br />
-        </div>
-
-        <div className="form-group">
-          <input
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirm Password"
-            {...register("confirmPassword")}
-            className={`form-control ${
-              errors.confirmPassword ? "is-invalid" : ""
-            }`}
-          />
-
-          <div className="invalid-feedback">
-            {errors.confirmPassword?.message}
+            <div className="invalid-feedback">{errors.username?.message}</div>
+            <br />
           </div>
-          <br />
-        </div>
-        <div className="form-group">
-          <button
-            type="submit"
-            className="mt-5 h-12 w-full border border-solid bg-green-600 text-white font-bold hover:bg-green-500"
-          >
-            Register
-          </button>
-        </div>
-      </form>
-    </div>
+          <div className="form-group">
+            <input
+              name="email"
+              type="text"
+              placeholder="Your Email"
+              {...register("email")}
+              className={`form-control ${errors.email ? "is-invalid" : ""}`}
+            />
+
+            <div className="invalid-feedback">{errors.email?.message}</div>
+            <br />
+          </div>
+          <div className="form-group">
+            <input
+              name="password"
+              type="password"
+              placeholder="Your Password"
+              {...register("password")}
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
+            />
+
+            <div className="invalid-feedback">{errors.password?.message}</div>
+            <br />
+          </div>
+          <div className="form-group">
+            <input
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              {...register("confirmPassword")}
+              className={`form-control ${
+                errors.confirmPassword ? "is-invalid" : ""
+              }`}
+            />
+            <div className="invalid-feedback">
+              {errors.confirmPassword?.message}
+            </div>
+            <br />
+          </div>
+          <div className="form-group">
+            <button
+              type="submit"
+              className="mt-5 h-12 w-full border border-solid bg-green-600 text-white font-bold hover:bg-green-500"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
